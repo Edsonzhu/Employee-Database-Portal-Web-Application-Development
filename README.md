@@ -8,9 +8,6 @@ Developed organizational portal containing employee information for company, suc
 *	Tested code for functionality, gathering familiarity for use of Express.js and Angular technologies used for website while making adjustments as required.
 
 
-### To run this program, it will be needed to install the node patch.
-
-
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 
