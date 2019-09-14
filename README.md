@@ -1,3 +1,16 @@
+# Employee Database Portal Web Application Development
+
+Developed organizational portal containing employee information for company, such as salary and position title, designing intuitive interface for user-end data entry.
+
+*	Utilized Angular technology for project development. Created interface, implementing design features to maximize design and organizational effect for user.
+*	Created database to store entered user data, creating pathway to website hosting application using JSON file for the purpose of information retrieval and revision. Used MVC concepts, separating application into three different sections including view, model, and controller to facilitate data interaction between pathway.
+*	Implemented permissions on user-side for editable information, locking certain options such as SIN number to prevent problematic data revision.
+*	Tested code for functionality, gathering familiarity for use of Express.js and Angular technologies used for website while making adjustments as required.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
 # EmployeeDatabasePortalWebApplicationDevelopment
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
