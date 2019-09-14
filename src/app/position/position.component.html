@@ -1,1 +1,48 @@
-<p>position works</p>
+<div class="center">
+  <br>
+  <h2>Position: {{position.PositionName}}</h2>
+  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non odio sed eros tristique bibendum.</p>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form #f='ngForm' (ngSubmit)="onSubmit(f)">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group" [ngClass]="{ 'has-error': pname.errors && pname.errors.required }">
+              <label class="control-label" for="PositionName">Position Name:</label>
+              <input class="form-control" id="PositionName" type="text" [(ngModel)]="position.PositionName" name="PositionName" #pname="ngModel" required/>
+              <div *ngIf="pname.errors && pname.errors.required">
+                <span class="help-block">Position Name is Required</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group"  [ngClass]="{ 'has-error': pdescrip.errors && pdescrip.errors.required }">
+              <label class="control-label" for="PositionDescription">Description:</label>
+              <textarea class="form-control" id="PositionDescription" rows="5" [(ngModel)]="position.PositionDescription" name="PositionDescription" #pdescrip="ngModel" required></textarea>
+              <div *ngIf="pdescrip.errors && pdescrip.errors.required">
+                <span class="help-block">Position Description is Required</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <a routerLink="/positions" class="btn btn-warning pull-left">Return to Position List</a>
+        <button type="submit" class="btn btn-primary pull-right" [disabled]="!f.valid">Update Position</button>
+        <br />
+        <br />
+      </form>
+    </div>
+  </div>
+<br />
+<div class="alert alert-success" [hidden]="!successMessage">
+  <strong>Success!</strong> Position: {{position.PositionName}} was successfully saved.
+</div>
+<div class="alert alert-danger" [hidden]="!failMessage">
+  <strong>Error!</strong> Position: {{position.PositionName}} could not be saved.
+</div>
+</div>
+<br /><br />

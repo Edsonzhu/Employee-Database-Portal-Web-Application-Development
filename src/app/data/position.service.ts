@@ -18,8 +18,8 @@ export class PositionService {
     return this.http.get<Position[]>(`${this.url}/positions`);
   }
 
-  savePosition(position: any): Observable<any> {
-    return this.http.put<any>(`${this.url}/position/${position._id}`, position);
+  savePosition(position: Position): Observable<any> {
+    return this.http.put<Position>(`${this.url}/position/${position._id}`, position);
   }
 
   getPosition(id: string): Observable<Position> {

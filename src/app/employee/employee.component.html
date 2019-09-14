@@ -1,1 +1,146 @@
-<p>employee works!</p>
+<div class="center">
+  <h2>Employee: {{ employee.FirstName }} {{ employee.LastName }}</h2>
+  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non odio sed eros tristique bibendum.
+  </p>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form #f='ngForm' (ngSubmit)="onSubmit(f)">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group" [ngClass]="{ 'has-error': Fname.errors && Fname.errors.required }">
+              <label class="control-label" for="FirstName">First Name:</label>
+              <input class="form-control" id="FirstName" type="text" name="FirstName" [(ngModel)]="employee.FirstName"
+                #Fname="ngModel" required />
+              <div *ngIf="Fname.errors && Fname.errors.required">
+                <span class="help-block">First Name is Required</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group" [ngClass]="{ 'has-error': Lname.errors && Lname.errors.required }">
+              <label class="control-label" for="LastName">Last Name:</label>
+              <input class="form-control" id="LastName" type="text" name="LastName" [(ngModel)]="employee.LastName"
+                #Lname="ngModel" required />
+              <div *ngIf="Lname.errors && Lname.errors.required">
+                <span class="help-block">Last Name is Required</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="Position">Position:</label>
+              <select class="form-control" id="Position" name="Position" [(ngModel)]="employee.Position">
+                <option *ngFor="let pos of positions; let i=index;" [value]="pos._id"
+                  [attr.selected]="employee.Position == pos._id ? true : null">{{ pos.PositionName }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group" [ngClass]="{ 'has-error': salaryB.errors && salaryB.errors.required }">
+              <label class="control-label" for="SalaryBonus">Salary Bonus</label>
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" id="SalaryBonus" type="number" required name="SalaryBonus"
+                  [(ngModel)]="employee.SalaryBonus" #salaryB="ngModel" />
+              </div>
+              <div *ngIf="salaryB.errors && salaryB.errors.required">
+                <span class="help-block">Salary Bonus is Required</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group" [ngClass]="{ 'has-error': street.errors && street.errors.required }">
+              <label class="control-label" for="AddressStreet">Address (Street):</label>
+              <input class="form-control" id="AddressStreet" type="text" name="AddressStreet"
+                [(ngModel)]="employee.AddressStreet" #street="ngModel" required />
+              <div *ngIf="street.errors && street.errors.required">
+                <span class="help-block">Street is Required</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group" [ngClass]="{ 'has-error': city.errors && city.errors.required }">
+              <label class="control-label" for="AddressCity">Address (City):</label>
+              <input class="form-control" id="AddressCity" type="text" name="AddressCity"
+                [(ngModel)]="employee.AddressCity" #city="ngModel" required />
+              <div *ngIf="city.errors && city.errors.required">
+                <span class="help-block">City is Required</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group" [ngClass]="{ 'has-error': state.errors && state.errors.required }">
+              <label class="control-label" for="AddressState">Address (State):</label>
+              <input class="form-control" id="AddressState" type="text" name="AddressState"
+                [(ngModel)]="employee.AddressState" #state="ngModel" required />
+              <div *ngIf="state.errors && state.errors.required">
+                <span class="help-block">State is Required</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group" [ngClass]="{ 'has-error': zipcode.errors && zipcode.errors.required }">
+              <label class="control-label" for="AddressZip">Address (Zip Code):</label>
+              <input class="form-control" id="AddressZip" type="text" name="AddressZip"
+                [(ngModel)]="employee.AddressZip" #zipcode="ngModel" required />
+              <div *ngIf="zipcode.errors && zipcode.errors.required">
+                <span class="help-block">Zip Code is Required</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group" [ngClass]="{ 'has-error': phone.errors && phone.errors.required }">
+              <label class="control-label" for="PhoneNum">Phone Number:</label>
+              <input class="form-control" id="PhoneNum" type="text" name="PhoneNum" [(ngModel)]="employee.PhoneNum"
+                #phone="ngModel"
+                pattern="\+?[ ]*[1-9]?[ ]*\-?[ ]*\(?[ ]*[1-9][ ]*(\d[ ]*){2}\)?[ ]*\-?[ ]*(\d[ ]*){3}-[ ]*(\d[]*){4}"
+                required />
+              <div *ngIf="phone.errors && phone.errors.required">
+                <span class="help-block">Phone is Required</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group" [ngClass]="{ 'has-error': ext.errors && ext.errors.required }">
+              <label class="control-label" for="Extension">Extension:</label>
+              <input class="form-control" id="Extension" type="number" required name="Extension"
+                [(ngModel)]="employee.Extension" #ext="ngModel" />
+              <div *ngIf="ext.errors && ext.errors.required">
+                <span class="help-block">Extension is Required</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="HireDate">Hire Date:</label>
+              <input class="form-control" id="HireDate" name="HireDate" type="text" readonly
+                value="{{employee.HireDate | date:'longDate'}}" />
+            </div>
+          </div>
+        </div>
+        <hr />
+        <a routerLink="/employees" class="btn btn-warning pull-left">Return to Employee List</a>
+        <!--<input type="submit" class="btn btn-primary pull-right" value="Update Employee" />-->
+        <button type="submit" class="btn btn-primary pull-right" [disabled]="!f.valid">Update Employee</button>
+        <br />
+        <br />
+      </form>
+    </div>
+  </div>
+  <br />
+  <div class="alert alert-success" [hidden]="!successMessage">
+    <strong>Success!</strong> {{employee.FirstName}} {{employee.LastName}}'s information was successfully saved.
+  </div>
+  <div class="alert alert-danger" [hidden]="!failMessage">
+    <strong>Error!</strong> {{employee.FirstName}} {{employee.LastName}}'s information could not be saved.
+  </div>
+</div>
+<br /><br />

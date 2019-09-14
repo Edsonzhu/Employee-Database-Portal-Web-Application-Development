@@ -23,16 +23,20 @@ export class EmployeeComponent implements OnInit {
   failMessage = false;
 
   constructor(private empS: EmployeeService, private actRoute: ActivatedRoute,
-    private posS: PositionService) { }
+    private posS: PositionService) { 
+      this.employee = new EmployeeRaw();
+    }
 
     ngOnInit() {
       this.paramSubscription = this.actRoute.params.subscribe(params =>{
         this.employeeSubscription = this.empS.getEmployee(params.id).subscribe(
-          (emp:EmployeeRaw) => {this.employee = emp[0];},
-          (err) => {},
-          () => {this.getPositionsSubscription = this.posS.getPositions()
-            .subscribe(pos => this.positions = pos);}
+          (emp) => {
+            this.employee = emp[0];
+          },
+          (err) => {}
         );
+        this.getPositionsSubscription = this.posS.getPositions()
+        .subscribe(pos => this.positions = pos);
       })
     }
   

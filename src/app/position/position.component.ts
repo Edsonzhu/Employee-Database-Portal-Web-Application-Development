@@ -17,7 +17,9 @@ export class PositionComponent implements OnInit {
   successMessage = false;
   failMessage = false;
 
-  constructor(private posS: PositionService, private actRoute: ActivatedRoute) {}
+  constructor(private posS: PositionService, private actRoute: ActivatedRoute) {
+    this.position = new Position();
+  }
 
   ngOnInit() {
     this.paramSub = this.actRoute.params.subscribe(params => {

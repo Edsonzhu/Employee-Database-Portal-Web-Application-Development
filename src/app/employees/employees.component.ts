@@ -24,19 +24,19 @@ export class EmployeesComponent implements OnInit {
                  err => this.loadingError = true);
   }
 
-//   onEmployeeSearchKeyUP(event:any) {
-//     let exp = event.target.value.toLowerCase();
-//     //let regex = new RegExp(exp, 'g'); console.log(event.target.value.toLowerCase())
-//     this.filteredEmployees = this.employees.filter(emp => {
-//       return (emp.FirstName.toLowerCase().includes(exp) || emp.LastName.toLowerCase().includes(exp) || emp.Position.PositionName.toLowerCase().includes(exp))
-//     });
-//   }
+  onEmployeeSearchKeyUP(event:any) {
+    let exp = event.target.value.toLowerCase();
+    //let regex = new RegExp(exp, 'g'); console.log(event.target.value.toLowerCase())
+    this.filteredEmployees = this.employees.filter(emp => {
+      return (emp.FirstName.toLowerCase().includes(exp) || emp.LastName.toLowerCase().includes(exp) || emp.Position.PositionName.toLowerCase().includes(exp))
+    });
+  }
 
-//   routeEmployee(id: string) {
-//     this.router.navigate(['/employee', id]);
-//   }
+  routeEmployee(id: string) {
+    this.router.navigate(['/employee', id]);
+  }
 
-//   ngOnDestroy(){
-//     if (this.getEmployeesSub) { this.getEmployeesSub.unsubscribe(); }
-//   }
+  ngOnDestroy(){
+    if (this.getEmployeesSub) { this.getEmployeesSub.unsubscribe(); }
+  }
 }
