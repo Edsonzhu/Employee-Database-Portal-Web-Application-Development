@@ -10,7 +10,7 @@ import { EmployeeRaw } from "./employeeRaw";
 
 export class EmployeeService {
 
-  private url = "https://shrouded-crag-99446.herokuapp.com";
+  private url = "https://team-api-ez.herokuapp.com";
 
   constructor(private http: HttpClient) { }
 

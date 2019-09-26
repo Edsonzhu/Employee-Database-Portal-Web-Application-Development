@@ -9,7 +9,7 @@ import { Position } from "./position";
 
 export class PositionService {
 
-  private url = "https://shrouded-crag-99446.herokuapp.com";
+  private url = "https://team-api-ez.herokuapp.com";
 
   constructor(private http: HttpClient) { }
 
